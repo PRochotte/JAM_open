@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets Open Source</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1 style="text-align: center;">Liste des Projets Open Source</h1>
+    
+    <!-- Barre de recherche -->
+    <form id="search-form">
+        <input type="text" placeholder="Write here..." name="text" id="search-input" class="input">
+        <button type="submit" id="search-button">Rechercher</button>
+    </form>
+
+    <!-- Bouton pour ajouter une API personnalisée -->
+    <button id="add-api-button" style="display: block; margin: 0 auto;">Ajouter une API personnalisée</button>
+
+    <ul id="projects-list"></ul>
+
+    <!-- Popup pour saisir l'URL de l'API personnalisée -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2>Ajouter une API personnalisée</h2>
+            <input type="text" id="custom-api-url" placeholder="URL de l'API personnalisée">
+            <button onclick="addCustomApi()">Ajouter</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

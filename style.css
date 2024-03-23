@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#projects-list {
+    list-style-type: none;
+    padding: 0;
+}
+.input {
+border-radius: 10px;
+outline: 2px solid #FEBF00;
+border: 0;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+background-color: #e2e2e2;
+outline-offset: 3px;
+padding: 10px 1rem;
+transition: 0.25s;
+width: 500px;
+}
+
+.input:focus {
+outline-offset: 5px;
+background-color: #fff
+}
+.project-item {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    height: auto;
+}
+#search-form {
+    margin-bottom: 20px;
+    text-align: center;
+}
+#search-input {
+    padding: 10px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+#search-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#search-button:hover {
+    background-color: #0056b3;
+}
+#add-api-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#add-api-button:hover {
+    background-color: #218838;
+}
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 9999;
+    color: #fff;
+}
+.popup-content {
+    text-align: left;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #fff;
+}
+#projects-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex; /* Ajout de cette ligne */
+    flex-direction: column; /* Ajout de cette ligne */
+    align-items: left; /* Ajout de cette ligne */
+}
