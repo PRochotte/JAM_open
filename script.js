@@ -70,7 +70,6 @@ async function displayProjects(query = '') {
             <p>Langage: ${project.language}</p>
             <p>Stars: ${project.stargazers_count}</p>
             <p>URL: <a href="${project.html_url}" target="_blank">${project.html_url}</a></p>
-            <button onclick="redirectToDiscussion('${project.name}')">Discussion</button> <!-- Bouton de discussion -->
             <button onclick="redirectToChat('${project.name}')">Chat</button> <!-- Bouton de chat -->
         `;
         projectsList.appendChild(listItem);

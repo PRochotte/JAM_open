@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discussion sur le Projet</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectName = urlParams.get('project');
+            if (projectName) {
+                document.getElementById('project-name').textContent = decodeURIComponent(projectName);
+            }
+        }
+    </script>
 </head>
 <body>
     <!-- Nom du Projet -->
