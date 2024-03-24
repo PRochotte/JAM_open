@@ -12,21 +12,37 @@ async function fetchProjects(query) {
 // Fonction pour trier les projets en fonction des critères sélectionnés
 function sortProjects(projects) {
     const starSort = document.getElementById('star-sort').value;
+    const languageSort = document.getElementById('language-sort').value;
 
     projects.sort((a, b) => {
         // Trier par nombre d'étoiles
         if (starSort === 'desc') {
-            return b.stargazers_count - a.stargazers_count;
+            if (b.stargazers_count !== a.stargazers_count) {
+                return b.stargazers_count - a.stargazers_count;
+            }
         } else if (starSort === 'asc') {
-            return a.stargazers_count - b.stargazers_count;
+            if (a.stargazers_count !== b.stargazers_count) {
+                return a.stargazers_count - b.stargazers_count;
+            }
         }
 
-        // Si aucun tri n'est appliqué, maintenir l'ordre actuel
+        // Trier par langage de programmation
+        console.log(a.language, languageSort, b.language);
+        if (languageSort !== 'all') {
+            if (a.language && b.language) {
+                return a.language.localeCompare(b.language);
+            } else {
+                if (!a.language && !b.language) return 0;
+                if (!a.language) return 1;
+                if (!b.language) return -1;
+            }
+        }
         return 0;
     });
 
     return projects;
 }
+
 
 // Fonction pour afficher les projets sur la page
 async function displayProjects(query = '') {
@@ -50,6 +66,19 @@ async function displayProjects(query = '') {
         projectsList.appendChild(listItem);
     });
 }
+
+// Gestionnaire d'événement pour la sélection de tri par étoiles
+document.getElementById('star-sort').addEventListener('change', function() {
+    const query = document.getElementById('search-input').value.trim();
+    displayProjects(query);
+});
+
+// Gestionnaire d'événement pour la sélection de tri par langage de programmation
+document.getElementById('language-sort').addEventListener('change', function() {
+    const query = document.getElementById('search-input').value.trim();
+    displayProjects(query);
+});
+
 
 // Gestionnaire d'événement pour la soumission du formulaire de recherche
 document.getElementById('search-form').addEventListener('submit', function(event) {
