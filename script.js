@@ -9,12 +9,33 @@ async function fetchProjects(query) {
     return data.items;
 }
 
+// Fonction pour trier les projets en fonction des critères sélectionnés
+function sortProjects(projects) {
+    const starSort = document.getElementById('star-sort').value;
+
+    projects.sort((a, b) => {
+        // Trier par nombre d'étoiles
+        if (starSort === 'desc') {
+            return b.stargazers_count - a.stargazers_count;
+        } else if (starSort === 'asc') {
+            return a.stargazers_count - b.stargazers_count;
+        }
+
+        // Si aucun tri n'est appliqué, maintenir l'ordre actuel
+        return 0;
+    });
+
+    return projects;
+}
+
 // Fonction pour afficher les projets sur la page
 async function displayProjects(query = '') {
-    const projects = await fetchProjects(query);
+    let projects = await fetchProjects(query);
+    projects = sortProjects(projects);
+
     const projectsList = document.getElementById('projects-list');
-    projectsList.innerHTML = ''; // Efface la liste précédente avant d'ajouter les nouveaux résultats
-    
+    projectsList.innerHTML = '';
+
     projects.forEach(project => {
         const listItem = document.createElement('li');
         listItem.classList.add('project-item');
@@ -24,6 +45,7 @@ async function displayProjects(query = '') {
             <p>Langage: ${project.language}</p>
             <p>Stars: ${project.stargazers_count}</p>
             <p>URL: <a href="${project.html_url}" target="_blank">${project.html_url}</a></p>
+            <button onclick="redirectToChat('${project.name}')">Chat</button> <!-- Bouton de chat -->
         `;
         projectsList.appendChild(listItem);
     });
@@ -31,9 +53,9 @@ async function displayProjects(query = '') {
 
 // Gestionnaire d'événement pour la soumission du formulaire de recherche
 document.getElementById('search-form').addEventListener('submit', function(event) {
-event.preventDefault(); // Empêche la soumission par défaut du formulaire
-const query = document.getElementById('search-input').value.trim();
-displayProjects(query);
+    event.preventDefault(); // Empêche la soumission par défaut du formulaire
+    const query = document.getElementById('search-input').value.trim();
+    displayProjects(query);
 });
 
 document.getElementById('add-api-button').addEventListener('click', function() {
@@ -54,26 +76,6 @@ function addCustomApi() {
         displayProjects(customApiUrl);
         closePopup();
     }
-}
-
-async function displayProjects(query = '') {
-    const projects = await fetchProjects(query);
-    const projectsList = document.getElementById('projects-list');
-    projectsList.innerHTML = '';
-    
-    projects.forEach(project => {
-        const listItem = document.createElement('li');
-        listItem.classList.add('project-item');
-        listItem.innerHTML = `
-            <h2>${project.name}</h2>
-            <p>Description: ${project.description}</p>
-            <p>Langage: ${project.language}</p>
-            <p>Stars: ${project.stargazers_count}</p>
-            <p>URL: <a href="${project.html_url}" target="_blank">${project.html_url}</a></p>
-            <button onclick="redirectToChat('${project.name}')">Chat</button> <!-- Bouton de chat -->
-        `;
-        projectsList.appendChild(listItem);
-    });
 }
 
 function redirectToChat(projectName) {

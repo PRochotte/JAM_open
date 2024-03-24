@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1 style="text-align: center;">Liste des Projets Open Source</h1>
-    
+
     <!-- Barre de recherche -->
     <form id="search-form">
         <input type="text" placeholder="Write here..." name="text" id="search-input" class="input">
@@ -17,6 +17,12 @@
 
     <!-- Bouton pour ajouter une API personnalisée -->
     <button id="add-api-button" style="display: block; margin: 0 auto;">Ajouter une API personnalisée</button>
+
+    <!-- Sélecteurs de tri -->
+    <select id="star-sort">
+        <option value="desc">Trier par étoiles (décroissant)</option>
+        <option value="asc">Trier par étoiles (croissant)</option>
+    </select>
 
     <ul id="projects-list"></ul>
 
