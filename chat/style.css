@@ -1,18 +1,18 @@
 #chat-box {
     width: 100%;
-    max-width: 600px; /* Limite la largeur de la boîte de chat */
+    max-width: 600px;
     margin: 20px auto;
     border: 1px solid #e4e6e8;
     background-color: #fff;
     padding: 10px;
     border-radius: 5px;
-    height: 80vh; /* Utilise 80% de la hauteur de la fenêtre */
+    height: 80vh;
     display: flex;
     flex-direction: column;
 }
 
 #chat-messages {
-    flex: 1; /* Utilise tout l'espace disponible */
+    flex: 1;
     overflow-y: scroll;
 }
 

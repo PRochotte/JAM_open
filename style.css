@@ -96,7 +96,7 @@ background-color: #fff
 #projects-list {
     list-style-type: none;
     padding: 0;
-    display: flex; /* Ajout de cette ligne */
-    flex-direction: column; /* Ajout de cette ligne */
-    align-items: left; /* Ajout de cette ligne */
+    display: flex; 
+    flex-direction: column; 
+    align-items: left; 
 }
